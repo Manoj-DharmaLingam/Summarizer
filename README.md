@@ -139,9 +139,7 @@ Contributions are welcome! Here's how you can help:
 
 ## 📧 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-
-Project Link: [https://github.com/yourusername/ai-text-summarizer](https://github.com/yourusername/ai-text-summarizer)
+Your Name - [D.S.Manoj](https://www.linkedin.com/in/ds-manoj-a67418327/)
 
 ---
 
