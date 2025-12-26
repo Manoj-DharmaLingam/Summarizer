@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Summarizer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            resize: vertical;
+        }
+
+        .tab-content input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .upload-btn i {
+            margin-right: 10px;
+        }
+
+        .file-name {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f0f4ff;
+            border-radius: 6px;
+            color: #667eea;
+            font-weight: 600;
+            display: none;
+            text-align: center;
+        }
+
+        .file-name.show {
+            display: block;
+        }
+
+        .file-name i {
+            margin-right: 8px;
+            color: #667eea;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .option-group label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .output-area {
+            background: #f8f9ff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 300px;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+
+        .output-area.empty {
+            color: #999;
+            font-style: italic;
+        }
+
+        .copy-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-brain"></i> AI Text Summarizer</h1>
+            <p>Simple and Fast</p>
+        </header>
+
+        <div class="main-content">
+            <div class="card">
+                <h2><i class="fas fa-edit"></i> Input</h2>
+                
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('text')">
+                        <i class="fas fa-keyboard"></i> Text
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('pdf')">
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </button>
+                </div>
+
+                <form method="POST" enctype="multipart/form-data">
+                    <div id="textTab" class="tab-content active">
+                        <textarea name="text" rows="10" placeholder="Paste your text here..."></textarea>
+                    </div>
+
+                    <div id="pdfTab" class="tab-content">
+                        <input type="file" name="pdf" id="pdfInput" accept=".pdf">
+                        <button type="button" class="upload-btn" onclick="document.getElementById('pdfInput').click()">
+                            <i class="fas fa-file-pdf"></i> Choose PDF File
+                        </button>
+                        <div class="file-name" id="fileName"></div>
+                    </div>
+
+                    <div class="options-grid">
+                        <div class="option-group">
+                            <label><i class="fas fa-sliders-h"></i> Mode</label>
+                            <select name="mode">
+                                <option value="short">Short Summary</option>
+                                <option value="detailed">Detailed</option>
+                                <option value="bullets">Bullet Points</option>
+                                <option value="notes">Study Notes</option>
+                                <option value="keypoints">Key Points</option>
+                            </select>
+                        </div>
+
+                        <div class="option-group">
+                            <label><i class="fas fa-text-height"></i> Length</label>
+                            <select name="length">
+                                <option value="short">Short (~100 words)</option>
+                                <option value="medium" selected>Medium (~200 words)</option>
+                                <option value="long">Long (~400 words)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-magic"></i> Generate Summary
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-file-alt"></i> Summary</h2>
+                
+                <div class="output-area {% if not summary %}empty{% endif %}">
+                    {% if summary %}{{ summary }}{% else %}Your summary will appear here...{% endif %}
+                </div>
+
+                {% if summary %}
+                <button class="copy-btn" onclick="copyText()">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
+            
+            if (tab === 'text') {
+                document.getElementById('textTab').classList.add('active');
+                buttons[0].classList.add('active');
+                document.getElementById('pdfInput').value = '';
+                document.getElementById('fileName').classList.remove('show');
+            } else {
+                document.getElementById('pdfTab').classList.add('active');
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // File upload handler
+        const pdfInput = document.getElementById('pdfInput');
+        const fileName = document.getElementById('fileName');
+
+        pdfInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                fileName.innerHTML = `<i class="fas fa-check-circle"></i> ${file.name} (${sizeMB} MB)`;
+                fileName.classList.add('show');
+            }
+        });
+
+        function copyText() {
+            const text = document.querySelector('.output-area').textContent;
+            navigator.clipboard.writeText(text);
+            alert('Copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
