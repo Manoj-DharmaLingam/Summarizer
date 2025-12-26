@@ -2,12 +2,9 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)](https://flask.palletsprojects.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Gemini](https://img.shields.io/badge/Google-Gemini%20AI-orange.svg)](https://ai.google.dev/)
 
 > A lightning-fast, minimalist web application that transforms lengthy texts and PDFs into concise, meaningful summaries using Google's Gemini AI.
-
-![AI Text Summarizer Demo](https://via.placeholder.com/800x400/667eea/ffffff?text=AI+Text+Summarizer)
 
 ## ✨ Features
 
