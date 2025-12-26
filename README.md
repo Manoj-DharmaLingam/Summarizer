@@ -1,2 +1,208 @@
-# Summarizer
-An AI-powered text summarizer built using Flask and Google Gemini 2.5 Flash. It allows users to summarize text or PDF documents into short, detailed, bullet-point, or note-style summaries with adjustable lengths for fast and efficient content understanding.
+# 🧠 AI Text Summarizer
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)](https://flask.palletsprojects.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Gemini](https://img.shields.io/badge/Google-Gemini%20AI-orange.svg)](https://ai.google.dev/)
+
+> A lightning-fast, minimalist web application that transforms lengthy texts and PDFs into concise, meaningful summaries using Google's Gemini AI.
+
+![AI Text Summarizer Demo](https://via.placeholder.com/800x400/667eea/ffffff?text=AI+Text+Summarizer)
+
+## ✨ Features
+
+- 📝 **Text & PDF Support** - Summarize text input or upload PDF documents
+- ⚡ **Lightning Fast** - Powered by Gemini 1.5 Flash model
+- 🎨 **Clean UI** - Modern, responsive design with smooth animations
+- 🔧 **Customizable** - 5 summary modes and 3 length options
+- 📋 **One-Click Copy** - Instantly copy summaries to clipboard
+- 🚀 **Simple Setup** - Minimal dependencies, easy to deploy
+- 💯 **Free & Open Source** - MIT licensed
+
+## 🎯 Summary Modes
+
+| Mode | Description |
+|------|-------------|
+| **Short** | Quick 2-3 sentence overview |
+| **Detailed** | Comprehensive summary with key details |
+| **Bullets** | Main points in bullet format |
+| **Notes** | Organized study notes with headings |
+| **Key Points** | Essential takeaways only |
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Google Gemini API key ([Get it here](https://aistudio.google.com/app/apikey))
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/ai-text-summarizer.git
+cd ai-text-summarizer
+```
+
+2. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+3. **Set up environment variables**
+
+Create a `.env` file in the project root:
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+4. **Run the application**
+```bash
+python app.py
+```
+
+5. **Open your browser**
+```
+http://localhost:5000
+```
+
+## 📁 Project Structure
+```
+ai-text-summarizer/
+├── app.py              # Flask application
+├── templates/
+│   └── index.html      # Frontend UI
+├── .env                # Environment variables (create this)
+├── requirements.txt    # Python dependencies
+├── README.md          # Project documentation
+└── LICENSE            # MIT License
+```
+
+## 🛠️ Technology Stack
+
+- **Backend**: Flask (Python)
+- **AI Model**: Google Gemini 1.5 Flash
+- **PDF Processing**: PyPDF2
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Icons**: Font Awesome 6
+
+## 📦 Dependencies
+```txt
+flask==3.0.0
+python-dotenv==1.0.0
+google-generativeai==0.8.3
+PyPDF2==3.0.1
+```
+
+## 💡 Usage Examples
+
+### Summarize Text
+1. Click on the **Text** tab
+2. Paste your content (articles, essays, documents)
+3. Select summary mode and length
+4. Click **Generate Summary**
+
+### Summarize PDF
+1. Click on the **PDF** tab
+2. Click **Choose PDF File** and select your document
+3. Choose your preferred mode and length
+4. Click **Generate Summary**
+
+## 🎨 Screenshots
+
+### Text Input
+![Text Input](https://via.placeholder.com/600x300/667eea/ffffff?text=Text+Input+Interface)
+
+### PDF Upload
+![PDF Upload](https://via.placeholder.com/600x300/764ba2/ffffff?text=PDF+Upload+Interface)
+
+### Summary Output
+![Summary Output](https://via.placeholder.com/600x300/667eea/ffffff?text=Summary+Output)
+
+## 🔑 Getting Your Gemini API Key
+
+1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click **Create API Key**
+4. Copy the key and add it to your `.env` file
+
+## ⚙️ Configuration
+
+You can customize the application by modifying these parameters in `app.py`:
+```python
+# Summary modes
+mode_prompts = {
+    "short": "Summarize in 2-3 sentences.",
+    "detailed": "Write detailed summary.",
+    "bullets": "Summarize as bullet points.",
+    "notes": "Create study notes.",
+    "keypoints": "List key points."
+}
+
+# Length limits
+length_prompts = {
+    "short": "Max 100 words.",
+    "medium": "Max 200 words.",
+    "long": "Max 400 words."
+}
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 Roadmap
+
+- [ ] Add support for more file formats (DOCX, TXT)
+- [ ] Implement summary history/bookmarks
+- [ ] Add multi-language support
+- [ ] Create REST API endpoints
+- [ ] Add export options (PDF, DOCX, TXT)
+- [ ] Implement user authentication
+- [ ] Add batch processing for multiple files
+- [ ] Dark mode toggle
+
+## 🐛 Known Issues
+
+- Large PDFs (>10MB) may take longer to process
+- Some PDFs with complex formatting may not extract text correctly
+- Image-based PDFs require OCR (not currently supported)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Google Gemini AI](https://ai.google.dev/) for the powerful language model
+- [Flask](https://flask.palletsprojects.com/) for the web framework
+- [Font Awesome](https://fontawesome.com/) for the icons
+- All contributors and users of this project
+
+## 📧 Contact
+
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+
+Project Link: [https://github.com/yourusername/ai-text-summarizer](https://github.com/yourusername/ai-text-summarizer)
+
+---
+
+## 🏷️ Tags
+
+`#ai` `#machine-learning` `#nlp` `#text-summarization` `#flask` `#python` `#gemini-ai` `#google-ai` `#pdf-processing` `#web-app` `#natural-language-processing` `#text-processing` `#summarizer` `#ai-tool` `#automation` `#productivity` `#open-source` `#mit-license` `#rest-api` `#document-processing` `#pdf-summarizer` `#text-analysis` `#deep-learning` `#generative-ai` `#llm` `#chatgpt-alternative` `#free-ai-tools` `#study-tool` `#research-tool` `#content-summarization` `#academic-tool`
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if you find it helpful!**
+
+Made with ❤️ and Python
+
+</div>
