@@ -36,36 +36,6 @@
 - Python 3.8 or higher
 - Google Gemini API key ([Get it here](https://aistudio.google.com/app/apikey))
 
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/ai-text-summarizer.git
-cd ai-text-summarizer
-```
-
-2. **Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-3. **Set up environment variables**
-
-Create a `.env` file in the project root:
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-4. **Run the application**
-```bash
-python app.py
-```
-
-5. **Open your browser**
-```
-http://localhost:5000
-```
-
 ## 📁 Project Structure
 ```
 ai-text-summarizer/
@@ -107,17 +77,6 @@ PyPDF2==3.0.1
 2. Click **Choose PDF File** and select your document
 3. Choose your preferred mode and length
 4. Click **Generate Summary**
-
-## 🎨 Screenshots
-
-### Text Input
-![Text Input](https://via.placeholder.com/600x300/667eea/ffffff?text=Text+Input+Interface)
-
-### PDF Upload
-![PDF Upload](https://via.placeholder.com/600x300/764ba2/ffffff?text=PDF+Upload+Interface)
-
-### Summary Output
-![Summary Output](https://via.placeholder.com/600x300/667eea/ffffff?text=Summary+Output)
 
 ## 🔑 Getting Your Gemini API Key
 
@@ -173,10 +132,6 @@ Contributions are welcome! Here's how you can help:
 - Large PDFs (>10MB) may take longer to process
 - Some PDFs with complex formatting may not extract text correctly
 - Image-based PDFs require OCR (not currently supported)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
