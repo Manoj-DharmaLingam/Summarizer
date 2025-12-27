@@ -42,7 +42,6 @@ ai-text-summarizer/
 ├── .env                # Environment variables (create this)
 ├── requirements.txt    # Python dependencies
 ├── README.md          # Project documentation
-└── LICENSE            # MIT License
 ```
 
 ## 🛠️ Technology Stack
