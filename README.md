@@ -138,7 +138,7 @@ Contributions are welcome! Here's how you can help:
 
 ## 📧 Contact
 
-Your Name - [D.S.Manoj](https://www.linkedin.com/in/ds-manoj-a67418327/)
+[D.S.Manoj](https://www.linkedin.com/in/ds-manoj-a67418327/)
 
 ---
 
